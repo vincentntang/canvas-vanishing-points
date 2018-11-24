@@ -15,3 +15,7 @@ Commits
 3. added blue color to stroke
 
 ![](https://i.imgur.com/Z5VJ6JU.png)
+
+4. Converting things from absolute pixel to variables + colorStrokes
+
+![](https://i.imgur.com/N7eIygq.png)
