@@ -49,6 +49,8 @@ function init() {
   ct.lineTo(800, 700); // back
   //calculate
   ct.lineTo(x0, y0);
+  ct.lineTo(900, 700);
+  ct.strokeStyle = 'blue';
   ct.stroke();
 }
 
