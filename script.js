@@ -17,16 +17,20 @@ var ct = canvas.getContext("2d");
 // x, y
 // right, down
 
+// Base point
+var x0 = 400;
+var y0 = 400;
+
 function init() {
   // First Line
   ct.beginPath();
-  ct.moveTo(400, 400);
+  ct.moveTo(x0, y0);
   ct.lineTo(800, 800);
   ct.stroke();
 
   // Second Line
   ct.beginPath();
-  ct.moveTo(400, 400);
+  ct.moveTo(x0, y0);
   ct.lineTo(0, 800);
   ct.stroke();
 
