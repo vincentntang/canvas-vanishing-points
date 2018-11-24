@@ -33,6 +33,9 @@ var y0a = 2 * y0;
 var x0b = 2 * x0;
 var y0b = 2 * y0;
 
+// Define delta
+var delta = 800;
+
 function init() {
   // Second Line
   ct.beginPath();
@@ -51,14 +54,14 @@ function init() {
   // House based on second Line
   ct.beginPath();
   ct.moveTo(x0b, y0b); // starting point
-  ct.lineTo(x0b + 100, y0b); // right x+100
-  ct.lineTo(x0b + 100, y0b - 100); // up y-100
-  ct.lineTo(x0b, y0b - 100); // left x-100
+  ct.lineTo(x0b + delta, y0b); // right x+100
+  ct.lineTo(x0b + delta, y0b - delta); // up y-100
+  ct.lineTo(x0b, y0b - delta); // left x-100
   ct.lineTo(x0b, y0b); // down y+100
-  ct.lineTo(x0b, y0b - 100); // back y-100
+  ct.lineTo(x0b, y0b - delta); // back y-100
   //calculate
   ct.lineTo(x0, y0);
-  ct.lineTo(x0b + 100, y0b - 100);
+  ct.lineTo(x0b + delta, y0b - delta);
   ct.strokeStyle = 'blue';
   ct.stroke();
 }

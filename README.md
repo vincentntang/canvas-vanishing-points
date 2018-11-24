@@ -19,3 +19,7 @@ Commits
 4. Converting things from absolute pixel to variables + colorStrokes
 
 ![](https://i.imgur.com/N7eIygq.png)
+
+5. Made everything a variable, can change delta
+
+![](https://i.imgur.com/XvXA8YJ.png)
