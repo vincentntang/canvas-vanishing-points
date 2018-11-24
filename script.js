@@ -3,8 +3,8 @@ var canvas = document.querySelector("canvas");
 // canvas.width = window.innerWidth;
 // canvas.height = window.innerHeight;
 
-canvas.width = 1000;
-canvas.height = 1000;
+canvas.width = 800;
+canvas.height = 800;
 
 var ct = canvas.getContext("2d");
 
@@ -18,16 +18,19 @@ var ct = canvas.getContext("2d");
 function init() {
   // First Line
   ct.beginPath();
-  ct.moveTo(500, 0);
-  ct.lineTo(1000, 1000);
+  ct.moveTo(400, 400);
+  ct.lineTo(800, 800);
   ct.stroke();
 
   // Second Line
   ct.beginPath();
-  ct.moveTo(500, 0);
-  ct.lineTo(0, 1000);
+  ct.moveTo(400, 400);
+  ct.lineTo(0, 800);
   ct.stroke();
 
+  // Make a house
+  ct.beginPath();
+  ct.moveTo
 }
 
 init();

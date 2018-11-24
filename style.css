@@ -1,5 +1,8 @@
 body {
   background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 canvas {
   border: 1px dotted red;
