@@ -1,9 +1,9 @@
 var canvas = document.querySelector("canvas");
 
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-canvas.width = 800;
+canvas.width = 1600;
 canvas.height = 800;
 
 var ct = canvas.getContext("2d");
@@ -14,6 +14,8 @@ var ct = canvas.getContext("2d");
 // 3. Draw a line parallel to canvas bottom
 // 4. Draw an adjoining item upward
 
+// x, y
+// right, down
 
 function init() {
   // First Line
@@ -30,7 +32,19 @@ function init() {
 
   // Make a house
   ct.beginPath();
-  ct.moveTo
+  ct.moveTo(800, 800);
+  ct.lineTo(800, 800);
+  ct.stroke();
+
+  ct.beginPath();
+  ct.moveTo(800, 800); // starting point
+  ct.lineTo(900, 800); // right x+100
+  ct.lineTo(900, 700); // up y-100
+  ct.lineTo(800, 700); // left x-100
+  ct.lineTo(800, 800); // down y+100
+  ct.lineTo(800, 700); // back
+  //calculate
+  ct.stroke();
 }
 
 init();
