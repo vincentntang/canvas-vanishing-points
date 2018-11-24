@@ -23,3 +23,7 @@ Commits
 5. Made everything a variable, can change delta
 
 ![](https://i.imgur.com/XvXA8YJ.png)
+
+Code sample
+
+![](https://i.imgur.com/Zk6JyQk.png)
