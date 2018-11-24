@@ -11,3 +11,7 @@ Commits
 2. Back to start point
 
 ![](https://i.imgur.com/1ycrMzz.png)
+
+3. added blue color to stroke
+
+![](https://i.imgur.com/Z5VJ6JU.png)
