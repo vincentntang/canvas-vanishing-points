@@ -48,6 +48,7 @@ function init() {
   ct.lineTo(800, 800); // down y+100
   ct.lineTo(800, 700); // back
   //calculate
+  ct.lineTo(x0, y0);
   ct.stroke();
 }
 
