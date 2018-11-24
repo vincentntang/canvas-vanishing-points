@@ -17,41 +17,54 @@ var ct = canvas.getContext("2d");
 // x, y
 // right, down
 
-// Base point
+// Nomenclature
+// x0a
+// coordinate type, vanishingPt#, endPtName
+
+// Vanishing point 0
 var x0 = 400;
 var y0 = 400;
 
+// Vanishing point end 0a
+var x0a = 0;
+var y0a = 2 * y0;
+
+// Vanishing point end 0b
+var x0b = 2 * x0;
+var y0b = 2 * y0;
+
 function init() {
-  // First Line
+  // Second Line
   ct.beginPath();
   ct.moveTo(x0, y0);
-  ct.lineTo(800, 800);
+  ct.lineTo(x0a, y0a);
+  ct.strokeStyle = 'red';
   ct.stroke();
 
   // Second Line
   ct.beginPath();
   ct.moveTo(x0, y0);
-  ct.lineTo(0, 800);
+  ct.lineTo(x0b, x0b);
+  ct.strokeStyle = 'green';
   ct.stroke();
 
-  // Make a house
+  // House based on second Line
   ct.beginPath();
-  ct.moveTo(800, 800);
-  ct.lineTo(800, 800);
-  ct.stroke();
-
-  ct.beginPath();
-  ct.moveTo(800, 800); // starting point
-  ct.lineTo(900, 800); // right x+100
-  ct.lineTo(900, 700); // up y-100
-  ct.lineTo(800, 700); // left x-100
-  ct.lineTo(800, 800); // down y+100
-  ct.lineTo(800, 700); // back
+  ct.moveTo(x0b, y0b); // starting point
+  ct.lineTo(x0b + 100, y0b); // right x+100
+  ct.lineTo(x0b + 100, y0b - 100); // up y-100
+  ct.lineTo(x0b, y0b - 100); // left x-100
+  ct.lineTo(x0b, y0b); // down y+100
+  ct.lineTo(x0b, y0b - 100); // back y-100
   //calculate
   ct.lineTo(x0, y0);
-  ct.lineTo(900, 700);
+  ct.lineTo(x0b + 100, y0b - 100);
   ct.strokeStyle = 'blue';
   ct.stroke();
+}
+
+function calculateDistance(x, y) {
+  return
 }
 
 init();
