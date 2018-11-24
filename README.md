@@ -1,3 +1,9 @@
+<style>
+  img {
+    width: 50%;
+  }
+</style>
+
 # musical-visualization-p5js
 
 Just kidding, its not musical notes. Its vanishing points
