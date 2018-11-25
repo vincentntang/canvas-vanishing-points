@@ -37,10 +37,10 @@ var y0b = 2 * y0;
 var slope_b = x0b / y0b;
 
 // Define delta
-var delta = 100;
+var size = 100;
 
 function init() {
-  console.log(delta, "delta");
+  console.log(size, "size");
   console.log(x0b, "x0b");
   console.log(y0b, "y0b");
   console.log(x0, "x0");
@@ -60,17 +60,25 @@ function init() {
   ct.stroke();
 
   // Draw a bunch of houses
-  drawHouse(x0b, y0b);
+  drawHouse(x0b, y0b, size, 'red');
 }
 
-function drawHouse(startX, startY) {
+function shadeColor() {
+
+}
+
+function drawHouse(startX, startY, size, color) {
   // House based on second Line
 
   // Formula slopes
   // m = (y1 - y0)/(x1 - x0)
+  // y1 = mx1 - mx0 + y0
 
   // Line distance Formula
   // d = sqrt((x1-x0)^2 + (y1-y0)^2)
+
+  // Pythagoreans Theorm
+  // c^2 = a^2 + b^2
 
   // Go here "\"
   // Nomenclature
@@ -79,19 +87,50 @@ function drawHouse(startX, startY) {
   // go counter clockwise on the points
 
   // calculate same sized lined box
-  let a1 = startX - 100;
+
+  // Calculate the 2nd point on vanishing line
+  let a1 = startX - size / 1.9; // ~45* angle approximation to make sure all lengths of square are same size
   let b1 = slope_b * (a1 - x0) + y0
+
+  // Side Face
   ct.beginPath();
   ct.moveTo(startX, startY);
   ct.lineTo(a1, b1);
-  ct.lineTo(a1, b1 - delta);
-  ct.lineTo(startX, startY - delta);
+  ct.lineTo(a1, b1 - size);
+  ct.lineTo(startX, startY - size);
   ct.lineTo(startX, startY);
   ct.closePath();
   ct.strokeStyle = 'purple';
   ct.fillStyle = 'red';
   ct.stroke();
   ct.fill();
+
+  // Front Face
+  ct.beginPath();
+  ct.moveTo(startX, startY);
+  ct.lineTo(startX + size, startY);
+  ct.lineTo(startX + size, startY - size);
+  ct.lineTo(startX, startY - size);
+  ct.lineTo(startX, startY);
+  ct.closePath();
+  ct.strokeStyle = 'purple';
+  ct.fillStyle = 'lightblue';
+  ct.stroke();
+  ct.fill();
+
+  // Top Face
+  ct.beginPath();
+  ct.moveTo(startX, startY - size);
+  ct.lineTo(a1, b1 - size);
+  ct.lineTo(a1 + size, b1 - size);
+  ct.lineTo(startX + size, startY - size);
+  ct.lineTo(startX, startY - size);
+  ct.closePath();
+  ct.strokeStyle = 'purple';
+  ct.fillStyle = 'lightgreen';
+  ct.stroke();
+  ct.fill();
+
 
   // ct.moveTo(startX, startY); // starting point
   // ct.lineTo(startX + delta, startY); // right x+100

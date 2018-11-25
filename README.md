@@ -61,3 +61,7 @@ slider.oninput = function () {
 9. Working shaded value face
 
 ![](https://i.imgur.com/o6ykolr.png)
+
+10. Simple box finished
+
+![](https://i.imgur.com/q8ILYqV.png)
