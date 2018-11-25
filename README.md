@@ -41,3 +41,15 @@ Code sample
 this is what it should do though??
 
 ![](https://i.imgur.com/BLFQngZ.png)
+
+7. Working Prototype from stackoverflow, number coercion from slider
+
+![](https://i.imgur.com/XU4AozG.gif)
+
+```
+slider.oninput = function () {
+  ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
+  delta = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
+  requestAnimationFrame(init()); // redraw everything
+}
+```
