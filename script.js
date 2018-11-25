@@ -76,6 +76,7 @@ init();
 var slider = document.getElementById("myRange");
 
 slider.oninput = function () {
-  delta = this.value;
+  ct.clearRect(0, 0, canvas.width, canvas.height); // add this line
+  delta = +this.value;
   requestAnimationFrame(init()); // redraw everything
 }
