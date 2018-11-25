@@ -34,10 +34,15 @@ var x0b = 2 * x0;
 var y0b = 2 * y0;
 
 // Define delta
-var delta = 100;
+var delta = 700;
 
 function init() {
-  // Second Line
+  console.log(delta, "delta");
+  console.log(x0b, "x0b");
+  console.log(y0b, "y0b");
+  console.log(x0, "x0");
+  console.log(y0, "y0");
+  // First Line
   ct.beginPath();
   ct.moveTo(x0, y0);
   ct.lineTo(x0a, y0a);
@@ -58,7 +63,7 @@ function init() {
   ct.lineTo(x0b + delta, y0b - delta); // up y-100
   ct.lineTo(x0b, y0b - delta); // left x-100
   ct.lineTo(x0b, y0b); // down y+100
-  ct.lineTo(x0b, y0b - delta); // back y-100
+  ct.lineTo(x0b, y0b - delta); // back up y-100
   //calculate
   ct.lineTo(x0, y0);
   ct.lineTo(x0b + delta, y0b - delta);
