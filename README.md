@@ -3,8 +3,8 @@
     width: 50% !important;
   }
 </style>
-
-# musical-visualization-p5js
+# musical-visualization-
+p5js
 
 Just kidding, its not musical notes. Its vanishing points
 
@@ -37,3 +37,7 @@ Code sample
 6. Semi working slider
 
 ![](https://i.imgur.com/3Dzzojg.gif)
+
+this is what it should do though??
+
+![](https://i.imgur.com/BLFQngZ.png)
