@@ -65,3 +65,7 @@ slider.oninput = function () {
 10. Simple box finished
 
 ![](https://i.imgur.com/q8ILYqV.png)
+
+11. Working Box color
+
+![](https://i.imgur.com/qr0Tb2E.gif)

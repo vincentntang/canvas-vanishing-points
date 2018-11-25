@@ -156,6 +156,6 @@ var slider = document.getElementById("myRange");
 
 slider.oninput = function () {
   ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
-  delta = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
+  size = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
   requestAnimationFrame(init()); // redraw everything
 }
