@@ -5,12 +5,15 @@ body {
   align-items: center;
 }
 .slideContainer {
-  position: absolute;
-  right: 15px;
-  top: 15px;
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  background-color: lightblue;
+  z-index: 20;
 }
 canvas {
   border: 1px dotted red;
   padding: 80px;
   background-color: lightgray;
+  transform: scale(0.5);
 }
