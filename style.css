@@ -3,6 +3,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.slideContainer {
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }
 canvas {
   border: 1px dotted red;

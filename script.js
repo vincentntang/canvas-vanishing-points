@@ -34,7 +34,7 @@ var x0b = 2 * x0;
 var y0b = 2 * y0;
 
 // Define delta
-var delta = 800;
+var delta = 100;
 
 function init() {
   // Second Line
@@ -66,9 +66,11 @@ function init() {
   ct.stroke();
 }
 
-function calculateDistance(x, y) {
-  return
-}
-
 init();
 
+var slider = document.getElementById("myRange");
+
+slider.oninput = function () {
+  delta = this.value;
+  requestAnimationFrame(init()); // redraw everything
+}

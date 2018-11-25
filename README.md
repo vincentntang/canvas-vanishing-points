@@ -1,6 +1,6 @@
 <style>
   img {
-    width: 50%;
+    width: 50% !important;
   }
 </style>
 
@@ -33,3 +33,7 @@ Commits
 Code sample
 
 ![](https://i.imgur.com/Zk6JyQk.png)
+
+6. Semi working slider
+
+![](https://i.imgur.com/3Dzzojg.gif)
