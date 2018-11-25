@@ -57,3 +57,7 @@ slider.oninput = function () {
 8. Created partial line using slope formulas in purple
 
 ![](https://i.imgur.com/Yo1AwTF.png)
+
+9. Working shaded value face
+
+![](https://i.imgur.com/o6ykolr.png)

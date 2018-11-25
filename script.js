@@ -1,3 +1,5 @@
+// for reference https://codepen.io/AshKyd/pen/JYXEpL, html5 canvas isometric cube
+
 var canvas = document.querySelector("canvas");
 
 canvas.width = window.innerWidth;
@@ -35,7 +37,7 @@ var y0b = 2 * y0;
 var slope_b = x0b / y0b;
 
 // Define delta
-var delta = 700;
+var delta = 100;
 
 function init() {
   console.log(delta, "delta");
@@ -67,18 +69,29 @@ function drawHouse(startX, startY) {
   // Formula slopes
   // m = (y1 - y0)/(x1 - x0)
 
+  // Line distance Formula
+  // d = sqrt((x1-x0)^2 + (y1-y0)^2)
+
   // Go here "\"
   // Nomenclature
   // a1,b1 = one coordinate pair
   // a2,b2 = another coordinate pair
   // go counter clockwise on the points
+
+  // calculate same sized lined box
   let a1 = startX - 100;
   let b1 = slope_b * (a1 - x0) + y0
   ct.beginPath();
   ct.moveTo(startX, startY);
   ct.lineTo(a1, b1);
+  ct.lineTo(a1, b1 - delta);
+  ct.lineTo(startX, startY - delta);
+  ct.lineTo(startX, startY);
+  ct.closePath();
   ct.strokeStyle = 'purple';
+  ct.fillStyle = 'red';
   ct.stroke();
+  ct.fill();
 
   // ct.moveTo(startX, startY); // starting point
   // ct.lineTo(startX + delta, startY); // right x+100
