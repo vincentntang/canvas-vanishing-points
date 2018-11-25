@@ -56,6 +56,10 @@ function init() {
   ct.strokeStyle = 'green';
   ct.stroke();
 
+  drawHouse();
+}
+
+function drawHouse() {
   // House based on second Line
   ct.beginPath();
   ct.moveTo(x0b, y0b); // starting point
@@ -69,14 +73,18 @@ function init() {
   ct.lineTo(x0b + delta, y0b - delta);
   ct.strokeStyle = 'blue';
   ct.stroke();
+
+  // Test
+  ct.fillRect(x0b, y0b, 500, 500);
 }
+
 
 init();
 
 var slider = document.getElementById("myRange");
 
 slider.oninput = function () {
-  ct.clearRect(0, 0, canvas.width, canvas.height); // add this line
-  delta = +this.value;
+  ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
+  delta = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
   requestAnimationFrame(init()); // redraw everything
 }
