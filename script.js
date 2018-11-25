@@ -56,22 +56,23 @@ function init() {
   ct.strokeStyle = 'green';
   ct.stroke();
 
-  drawHouse();
+  drawHouse(x0b, y0b);
 }
 
-function drawHouse() {
+function drawHouse(startX, startY) {
   // House based on second Line
   ct.beginPath();
-  ct.moveTo(x0b, y0b); // starting point
-  ct.lineTo(x0b + delta, y0b); // right x+100
-  ct.lineTo(x0b + delta, y0b - delta); // up y-100
-  ct.lineTo(x0b, y0b - delta); // left x-100
-  ct.lineTo(x0b, y0b); // down y+100
-  ct.lineTo(x0b, y0b - delta); // back up y-100
+  ct.moveTo(startX, startY); // starting point
+  ct.lineTo(startX + delta, startY); // right x+100
+  ct.lineTo(startX + delta, startY - delta); // up y-100
+  ct.lineTo(startX, startY - delta); // left x-100
+  ct.lineTo(startX, startY); // down y+100
+  ct.lineTo(startX, startY - delta); // back up y-100
   //calculate
   ct.lineTo(x0, y0);
   ct.lineTo(x0b + delta, y0b - delta);
   ct.strokeStyle = 'blue';
+  ct.fillStyle
   ct.stroke();
 
   // Test
