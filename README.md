@@ -66,6 +66,10 @@ slider.oninput = function () {
 
 ![](https://i.imgur.com/q8ILYqV.png)
 
-11. Working Box color
+11. Growing Box
 
 ![](https://i.imgur.com/qr0Tb2E.gif)
+
+12. Made a full house
+
+![](https://i.imgur.com/6xFKNRG.gif)

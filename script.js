@@ -80,6 +80,10 @@ function drawHouse(startX, startY, size, color) {
   // Pythagoreans Theorm
   // c^2 = a^2 + b^2
 
+  // Height of a 45* triangle
+  // Area = 1/2*base*height
+  // height = size variable
+
   // Go here "\"
   // Nomenclature
   // a1,b1 = one coordinate pair
@@ -89,7 +93,7 @@ function drawHouse(startX, startY, size, color) {
   // calculate same sized lined box
 
   // Calculate the 2nd point on vanishing line
-  let a1 = startX - size / 1.9; // ~45* angle approximation to make sure all lengths of square are same size
+  let a1 = startX - size / 1.9; // ~45* angle approximation to make sure all lengths of square are same size. Use line distance / pythagoreans theorm for accuracy
   let b1 = slope_b * (a1 - x0) + y0
 
   // Side Face
@@ -98,7 +102,6 @@ function drawHouse(startX, startY, size, color) {
   ct.lineTo(a1, b1);
   ct.lineTo(a1, b1 - size);
   ct.lineTo(startX, startY - size);
-  ct.lineTo(startX, startY);
   ct.closePath();
   ct.strokeStyle = 'purple';
   ct.fillStyle = 'red';
@@ -111,42 +114,58 @@ function drawHouse(startX, startY, size, color) {
   ct.lineTo(startX + size, startY);
   ct.lineTo(startX + size, startY - size);
   ct.lineTo(startX, startY - size);
-  ct.lineTo(startX, startY);
   ct.closePath();
   ct.strokeStyle = 'purple';
   ct.fillStyle = 'lightblue';
   ct.stroke();
   ct.fill();
 
-  // Top Face
+  // Top Face - Not necessary but whatever
   ct.beginPath();
   ct.moveTo(startX, startY - size);
   ct.lineTo(a1, b1 - size);
   ct.lineTo(a1 + size, b1 - size);
   ct.lineTo(startX + size, startY - size);
-  ct.lineTo(startX, startY - size);
   ct.closePath();
   ct.strokeStyle = 'purple';
   ct.fillStyle = 'lightgreen';
   ct.stroke();
   ct.fill();
 
+  // Draw Roof Back Face - Not necessary but whatever
+  ct.beginPath();
+  ct.moveTo(a1, b1 - size);
+  ct.lineTo(a1 + size / 2, b1 - 2 * size);
+  ct.lineTo(a1 + size, b1 - size);
+  ct.closePath();
+  ct.strokeStyle = 'purple';
+  ct.fillStyle = 'pink';
+  ct.stroke();
+  ct.fill();
 
-  // ct.moveTo(startX, startY); // starting point
-  // ct.lineTo(startX + delta, startY); // right x+100
-  // ct.lineTo(startX + delta, startY - delta); // up y-100
-  // ct.lineTo(startX, startY - delta); // left x-100
-  // ct.lineTo(startX, startY); // down y+100
-  // ct.lineTo(startX, startY - delta); // back up y-100
-  // //calculate
-  // ct.lineTo(x0, y0);
-  // ct.lineTo(x0b + delta, y0b - delta);
-  // ct.strokeStyle = 'blue';
-  // ct.fillStyle
-  // ct.stroke();
+  // Draw a Roof Front Face
+  ct.beginPath();
+  ct.moveTo(startX, startY - size);
+  ct.lineTo(startX + size / 2, startY - 2 * size);
+  ct.lineTo(startX + size, startY - size);
+  ct.closePath();
+  ct.strokeStyle = 'purple';
+  ct.fillStyle = 'pink';
+  ct.stroke();
+  ct.fill();
 
-  // // Test
-  // ct.fillRect(x0b, y0b, 500, 500);
+  // Shade frontside
+  ct.beginPath();
+  ct.moveTo(startX, startY - size);
+  ct.lineTo(a1, b1 - size);
+  ct.lineTo(a1 + size / 2, b1 - 2 * size);
+  ct.lineTo(startX + size / 2, startY - 2 * size);
+  ct.closePath();
+  ct.strokeStyle = 'purple';
+  ct.fillStyle = 'lightblue';
+  ct.stroke();
+  ct.fill();
+
 }
 
 
