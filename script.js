@@ -171,10 +171,18 @@ function drawHouse(startX, startY, size, color) {
 
 init();
 
-var slider = document.getElementById("myRange");
+var slider = document.getElementById("mySize");
+var slider2 = document.getElementById("myBaseY");
+
 
 slider.oninput = function () {
   ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
   size = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
+  requestAnimationFrame(init()); // redraw everything
+}
+
+slider2.oninput = function () {
+  ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
+  y0 = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
   requestAnimationFrame(init()); // redraw everything
 }
