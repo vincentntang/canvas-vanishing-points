@@ -53,3 +53,7 @@ slider.oninput = function () {
   requestAnimationFrame(init()); // redraw everything
 }
 ```
+
+8. Created partial line using slope formulas in purple
+
+![](https://i.imgur.com/Yo1AwTF.png)
