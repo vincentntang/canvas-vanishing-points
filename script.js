@@ -34,17 +34,16 @@ var y0a = 2 * y0;
 // Vanishing point end 0b
 var x0b = 2 * x0;
 var y0b = 2 * y0;
-var slope_b = x0b / y0b;
 
 // Define delta
 var size = 100;
 
 function init() {
-  console.log(size, "size");
-  console.log(x0b, "x0b");
-  console.log(y0b, "y0b");
-  console.log(x0, "x0");
-  console.log(y0, "y0");
+  // console.log(size, "size");
+  // console.log(x0b, "x0b");
+  // console.log(y0b, "y0b");
+  // console.log(x0, "x0");
+  // console.log(y0, "y0");
   // First Line
   ct.beginPath();
   ct.moveTo(x0, y0);
@@ -93,8 +92,14 @@ function drawHouse(startX, startY, size, color) {
   // calculate same sized lined box
 
   // Calculate the 2nd point on vanishing line
+  var slope_b = (x0b - x0) / (y0b - y0);
   let a1 = startX - size / 1.9; // ~45* angle approximation to make sure all lengths of square are same size. Use line distance / pythagoreans theorm for accuracy
   let b1 = slope_b * (a1 - x0) + y0
+
+  console.log(x0, "x0");
+  console.log(y0, "y0");
+  console.log(slope_b, "slope_b");
+
 
   // Side Face
   ct.beginPath();
@@ -182,6 +187,7 @@ slider.oninput = function () {
 }
 
 slider2.oninput = function () {
+
   ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
   y0 = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
   requestAnimationFrame(init()); // redraw everything

@@ -73,3 +73,11 @@ slider.oninput = function () {
 12. Made a full house
 
 ![](https://i.imgur.com/6xFKNRG.gif)
+
+13. Second Slider on baseY point does weird stuff
+
+![](https://i.imgur.com/BRCHXiP.gif)
+
+14. Slope_B now console.logs correctly
+
+![](https://i.imgur.com/yAXKCR7.gif)
