@@ -85,3 +85,5 @@ slider.oninput = function () {
 15. Had Slope formula upsidedown, swap x and y
 
 ![](https://i.imgur.com/QhUdwIq.gif)
+
+16. Refactoring to stackoverflow post initialization
