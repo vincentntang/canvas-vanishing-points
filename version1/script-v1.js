@@ -39,15 +39,10 @@ var y0a = 800;
 var x0b = 800;
 var y0b = 800;
 
-// Define delta
+// Define length of box edges
 var size = 100;
 
 function init() {
-  // console.log(size, "size");
-  // console.log(x0b, "x0b");
-  // console.log(y0b, "y0b");
-  // console.log(x0, "x0");
-  // console.log(y0, "y0");
   // First Line
   ct.beginPath();
   ct.moveTo(x0, y0);

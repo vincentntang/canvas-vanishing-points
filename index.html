@@ -2,22 +2,15 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="style-v1.css" />
+  <link rel="stylesheet" href="style-v2.css" />
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="slideContainer">
-      <span>Adjust Size</span>
-      <input type="range" min="1" max="800" value="50" class="slider" id="mySize">
-      <hr>
-      <span>Adjust Basepoint Y</span>
-      <input type="range" min="1" max="800" value="50" class="slider" id="myBaseY">
-    </div>
+  <canvas id="canvas"></canvas>
+  <input type="range" min="1" max="800" value="50" id="slider">
+  <code id="info"></code>
 
-    <canvas id="canvas"></canvas>
-  </div>
-  <script src="script-v1.js"></script>
+  <script src="script-v2.js"></script>
 </body>
 
 </html>
