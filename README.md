@@ -81,3 +81,7 @@ slider.oninput = function () {
 14. Slope_B now console.logs correctly
 
 ![](https://i.imgur.com/yAXKCR7.gif)
+
+15. Had Slope formula upsidedown, swap x and y
+
+![](https://i.imgur.com/QhUdwIq.gif)

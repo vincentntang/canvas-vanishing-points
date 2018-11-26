@@ -25,15 +25,18 @@ var ct = canvas.getContext("2d");
 
 // Vanishing point 0
 var x0 = 400;
-var y0 = 400;
+var y0 = 300;
 
 // Vanishing point end 0a
 var x0a = 0;
-var y0a = 2 * y0;
+// var y0a = 2 * y0;
+var y0a = 800;
 
 // Vanishing point end 0b
-var x0b = 2 * x0;
-var y0b = 2 * y0;
+// var x0b = 2 * x0;
+// var y0b = 2 * y0;
+var x0b = 800;
+var y0b = 800;
 
 // Define delta
 var size = 100;
@@ -59,7 +62,7 @@ function init() {
   ct.stroke();
 
   // Draw a bunch of houses
-  drawHouse(x0b, y0b, size, 'red');
+  drawHouse(x0b, y0b, size);
 }
 
 function shadeColor() {
@@ -92,13 +95,17 @@ function drawHouse(startX, startY, size, color) {
   // calculate same sized lined box
 
   // Calculate the 2nd point on vanishing line
-  var slope_b = (x0b - x0) / (y0b - y0);
+  var slope_b = (y0b - y0) / (x0b - x0);
   let a1 = startX - size / 1.9; // ~45* angle approximation to make sure all lengths of square are same size. Use line distance / pythagoreans theorm for accuracy
   let b1 = slope_b * (a1 - x0) + y0
 
   console.log(x0, "x0");
   console.log(y0, "y0");
   console.log(slope_b, "slope_b");
+  console.log(x0b, "x0b");
+  console.log(y0b, "y0b");
+  console.log(a1, "a1");
+  console.log(b1, "b1");
 
 
   // Side Face
@@ -189,6 +196,6 @@ slider.oninput = function () {
 slider2.oninput = function () {
 
   ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
-  y0 = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
+  y0 = Number(this.value); // convert the slider value to a number for type coersion (see stackoverflow)
   requestAnimationFrame(init()); // redraw everything
 }
