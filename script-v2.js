@@ -17,7 +17,8 @@ var redraw = true; // When true, scene is redrawn ready for the next display ref
 // Constructor Function to initialize objects
 const point = (x = 0, y = 0) => ({ x, y });
 const pointCalc = (p, x = 0, y = 0) => ({ x: p.x + x, y: p.y + y });
-const scalePoint = (origin, point, scale) => { // y = mx + b slope formula for other points
+// y = mx + b slope formula for other points
+const scalePoint = (origin, point, scale) => {
   point.x = (point.x - origin.x) * scale + origin.x;
   point.y = (point.y - origin.y) * scale + origin.y;
 };
@@ -34,6 +35,9 @@ slider.addEventListener("input", (e) => {
   delta = Number(e.target.value);
   redraw = true; // uses semaphore (a state variable) to indicate when to redraw
 })
+// slider1.addEventListener("input", (e) => {
+
+// })
 
 function update() { // render loop redraws only if true
   if (redraw) { // monitor semaphore / state
