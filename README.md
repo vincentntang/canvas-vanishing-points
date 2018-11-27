@@ -1,12 +1,4 @@
-<style>
-  img {
-    width: 50% !important;
-  }
-</style>
-# musical-visualization-
-p5js
-
-Just kidding, its not musical notes. Its vanishing points
+Vanishing points commit log changes
 
 Commits
 
