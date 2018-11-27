@@ -1,5 +1,3 @@
-Vanishing points commit log changes
-
 Commits
 
 1. Plain simple box

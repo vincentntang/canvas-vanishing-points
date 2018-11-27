@@ -1,0 +1,19 @@
+body {
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slideContainer {
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  background-color: lightblue;
+  z-index: 20;
+}
+canvas {
+  border: 1px dotted red;
+  padding: 80px;
+  background-color: lightgray;
+  transform: scale(0.5);
+}
