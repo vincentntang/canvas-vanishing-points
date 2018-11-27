@@ -1,9 +1,9 @@
-(() => {
 
+(function () {
   requestAnimationFrame(update);
 
-  var canvas = document.querySelector("canvas");
-  var slider = document.querySelector("slider");
+  var canvas: any = document.getElementById("canvas");
+  var slider: any = document.getElementById("slider");
   const ct = canvas.getContext("2d");
   const width = 1600;
   const height = 800;
@@ -39,9 +39,6 @@
     delta = Number((e.target as HTMLInputElement).value);
     redraw = true; // uses semaphore (a state variable) to indicate when to redraw
   })
-  // slider1.addEventListener("input", (e) => {
-
-  // })
 
   function update() { // render loop redraws only if true
     if (redraw) { // monitor semaphore / state
@@ -112,5 +109,4 @@
     ct.closePath(); // draw closing line
     ct.stroke();
   }
-  /* */
-})()
+})();
