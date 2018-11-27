@@ -51,6 +51,7 @@ function update() { // render loop redraws only if true
 }
 
 // was function init(), specify start and endpoint
+// What does a face need anyways? - Needs two coordinates. A width. That's it?
 function draw() {
   drawLine(p1, pA, "red");
   drawLine(p1, pB, "green");
@@ -60,11 +61,13 @@ function draw() {
 function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish point
   ct.strokeStyle = col;
   ct.lineWidth = width;
+
   const p0 = pointCalc(p); // get corners
   const p1 = pointCalc(p, size, 0); // bottom right
   const p2 = pointCalc(p, size, -size); // topright
   const p3 = pointCalc(p, 0, -size); // topleft
   drawPoly(col, width, p0, p1, p2, p3); // create frontface from values
+
 
   ct.beginPath(); // draw vanish lines
   pathLine(p0, vp); // bottom left

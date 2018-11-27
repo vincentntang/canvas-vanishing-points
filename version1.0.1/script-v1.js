@@ -1,32 +1,14 @@
 // for reference https://codepen.io/AshKyd/pen/JYXEpL, html5 canvas isometric cube
-// https://stackoverflow.com/questions/53464401/canvas-request-animation-out-of-frame-on-slider-input-to-javascript-variable
-
-// TODO
-// 1. Make a center point
-// 2. Draw lines jutting from center
-// 3. Draw a line parallel to canvas bottom
-// 4. Draw an adjoining item upward
 
 var canvas = document.querySelector("canvas");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 canvas.width = 1600;
 canvas.height = 800;
 
 var ct = canvas.getContext("2d");
-
-// x, y
-// right, down
-
-// Nomenclature
-// x0a
-// coordinate type, vanishingPt#, endPtName
-
-// Vanishing point 0
 var x0 = 400;
-var y0 = 300;
+var y0 = 400;
 
 // Vanishing point end 0a
 var x0a = 0;
@@ -183,6 +165,7 @@ init();
 // Slider Functionality
 var slider = document.getElementById("mySize");
 var slider2 = document.getElementById("myBaseY");
+var slider3 = document.getElementById("myBaseX");
 slider.oninput = function () {
   ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
   size = +this.value; // convert the slider value to a number for type coersion (see stackoverflow)
@@ -190,8 +173,12 @@ slider.oninput = function () {
 }
 
 slider2.oninput = function () {
-
   ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
   y0 = Number(this.value); // convert the slider value to a number for type coersion (see stackoverflow)
+  requestAnimationFrame(init()); // redraw everything
+}
+slider3.oninput = function () {
+  ct.clearRect(0, 0, canvas.width, canvas.height); // reset lines
+  x0 = Number(this.value); // convert the slider value to a number for type coersion (see stackoverflow)
   requestAnimationFrame(init()); // redraw everything
 }
