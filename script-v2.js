@@ -58,23 +58,38 @@ function draw() {
 function drawVBox(p, size, vp, col, width) {
     ct.strokeStyle = col;
     ct.lineWidth = width;
-    var p0 = pointCalc(p); // get corners
-    var p1 = pointCalc(p, size, 0); // bottom right
-    var p2 = pointCalc(p, size, -size); // topright
-    var p3 = pointCalc(p, 0, -size); // topleft
-    drawPoly(col, width, p0, p1, p2, p3); // create frontface from values
-    ct.beginPath(); // draw vanish lines
-    pathLine(p0, vp); // bottom left
-    pathLine(p1, vp); // bottom right
-    pathLine(p2, vp); // top right
-    pathLine(p3, vp); // top left
-    ct.stroke();
-    var scale = 1 - size / (800 * 2);
-    scalePoint(vp, p0, scale); // uses slope formula to calculate backface points
-    scalePoint(vp, p1, scale);
-    scalePoint(vp, p2, scale);
-    scalePoint(vp, p3, scale);
-    drawPoly(col, width, p0, p1, p2, p3); // create backface from values
+    // Front
+    var frontFace = [
+        pointCalc(p),
+        pointCalc(p, size, 0),
+        pointCalc(p, size, -size),
+        pointCalc(p, 0, -size),
+    ];
+    console.log(frontFace);
+    // let leftFace = {
+    //   p0: pointCalc(p),
+    //   p1: pointCalc(p, size, 0),
+    // }
+    // let bottomFace = {
+    //   p0: pointCalc(p)
+    // }
+    // const p0 = pointCalc(p); // get corners
+    // const p1 = pointCalc(p, size, 0); // bottom right
+    // const p2 = pointCalc(p, size, -size); // topright
+    // const p3 = pointCalc(p, 0, -size); // topleft
+    drawPoly.apply(void 0, [col, width].concat(frontFace)); // create frontface from values
+    // ct.beginPath(); // draw vanish lines
+    // pathLine(p0, vp); // bottom left
+    // pathLine(p1, vp); // bottom right
+    // pathLine(p2, vp); // top right
+    // pathLine(p3, vp); // top left
+    // ct.stroke();
+    // const scale = 1 - size / (800 * 2);
+    // scalePoint(vp, p0, scale); // uses slope formula to calculate backface points
+    // scalePoint(vp, p1, scale);
+    // scalePoint(vp, p2, scale);
+    // scalePoint(vp, p3, scale);
+    // drawPoly(col, width, p0, p1, p2, p3); // create backface from values
 }
 /**
  * Grab the coordinate pairs
