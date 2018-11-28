@@ -109,9 +109,9 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
     point.y = (point.y - vp.y) * scale + vp.x;
     return point;
   });
-  console.log(frontFace, "frontFace");
-  console.log(backFace, "backFace");
+  // console.log(backFace, "backFace");
   drawPoly(col, width, ...frontFace);
+  console.log(frontFace, "frontFace");
 
   // const p0 = pointCalc(p); // bottomleft
   // const p1 = pointCalc(p, size, 0); // bottom right
@@ -189,6 +189,7 @@ function drawPoly(col, width, ...points) {
   ct.lineWidth = width;
   ct.beginPath();
   for (const p of points) {
+    console.log(p);
     ct.lineTo(p.x, p.y); // lineTo every point
   }
   ct.fill();

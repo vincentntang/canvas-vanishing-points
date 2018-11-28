@@ -59,3 +59,7 @@ slider.oninput = function () {
 ![](https://i.imgur.com/887DWnI.png)
 
 ![](https://i.imgur.com/bJS5UTi.png)
+
+19. It must be an async thing. Console.logs are firing first
+
+![](https://i.imgur.com/DsQHmTt.png)
