@@ -43,3 +43,7 @@ slider.oninput = function () {
   requestAnimationFrame(init()); // redraw everything
 }
 ```
+
+16. Refactoring, part 1 destructuring with spread operator
+
+![](https://i.imgur.com/JnxL44Q.png)
