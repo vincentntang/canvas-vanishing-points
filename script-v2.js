@@ -96,12 +96,15 @@ function drawVBox(p, size, vp, col, width) {
         pointCalc(p, 0, -size)
     ];
     drawPoly.apply(void 0, [col, width].concat(frontFace)); // create frontface from values
+    console.log(frontFace, "frontFace");
     var scale = 1 - size / (800 * 2); // Inverse scalar
     var backFace = frontFace.map(function (point) {
         point.x = (point.x - vp.x) * scale + vp.y;
         point.y = (point.y - vp.y) * scale + vp.x;
         return point;
     });
+    console.log(frontFace, "frontFace");
+    console.log(backFace, "backFace");
     drawPoly.apply(void 0, [col, width].concat(frontFace));
     // const p0 = pointCalc(p); // bottomleft
     // const p1 = pointCalc(p, size, 0); // bottom right

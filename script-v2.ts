@@ -101,10 +101,7 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
     pointCalc(p, 0, -size)
   ]
   drawPoly(col, width, ...frontFace); // create frontface from values
-
-
-
-
+  console.log(frontFace, "frontFace");
   const scale = 1 - size / (800 * 2); // Inverse scalar
 
   let backFace = frontFace.map(point => {
@@ -112,6 +109,8 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
     point.y = (point.y - vp.y) * scale + vp.x;
     return point;
   });
+  console.log(frontFace, "frontFace");
+  console.log(backFace, "backFace");
   drawPoly(col, width, ...frontFace);
 
   // const p0 = pointCalc(p); // bottomleft

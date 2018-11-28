@@ -53,3 +53,9 @@ slider.oninput = function () {
 ![](https://i.imgur.com/8LxmBuh.png)
 
 ![](https://i.imgur.com/6LXc7NM.png)
+
+18. this doesn't make sense. frontface=backface values, but canvas says otherwise
+
+![](https://i.imgur.com/887DWnI.png)
+
+![](https://i.imgur.com/bJS5UTi.png)
