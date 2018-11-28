@@ -47,3 +47,9 @@ slider.oninput = function () {
 16. Refactoring, part 1 destructuring with spread operator
 
 ![](https://i.imgur.com/JnxL44Q.png)
+
+17. oh shit I made it work, two faces with remade formulas. Codes way cleaner now, code golf
+
+![](https://i.imgur.com/8LxmBuh.png)
+
+![](https://i.imgur.com/6LXc7NM.png)

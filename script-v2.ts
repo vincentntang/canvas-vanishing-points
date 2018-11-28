@@ -58,30 +58,29 @@ function draw() {
 }
 
 function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish point
-  ct.strokeStyle = col;
-  ct.lineWidth = width;
+
   /**
    * Use clockwise notation for p0, p1,p2,p3 respectively
    * bottom-left, bottomright, topright, topleft
    * pointCalc - (p,x,y) where (x,y) are changes
    */
   // Front
-  const slope = calculateSlope(p, vp);
-  const angle = Math.tanh(slope);
-  console.log(angle);
-  let frontFace = [
-    pointCalc(p), // bl
-    pointCalc(p, size, 0), //br
-    pointCalc(p, size, -size), //tr
-    pointCalc(p, 0, -size), //tl
-  ]
-  let leftFace = [
-    pointCalc(p), //br
-    pointCalc(p, 0, -size), //tr
-    pointCalc(p, 0),// tl - Not really sure
-    pointCalc(p, -size * Math.cos(angle), -size * Math.sin(angle)), //bl
-  ]
-  console.log(frontFace);
+  // const slope = calculateSlope(p, vp);
+  // const angle = Math.tanh(slope);
+  // console.log(angle);
+  // let frontFace = [
+  //   pointCalc(p), // bl
+  //   pointCalc(p, size, 0), //br
+  //   pointCalc(p, size, -size), //tr
+  //   pointCalc(p, 0, -size), //tl
+  // ]
+  // let leftFace = [
+  //   pointCalc(p), //br
+  //   pointCalc(p, 0, -size), //tr
+  //   pointCalc(p, 0),// tl - Not really sure
+  //   pointCalc(p, -size * Math.cos(angle), -size * Math.sin(angle)), //bl
+  // ]
+  // console.log(frontFace);
   // let leftFace = {
   //   p0: pointCalc(p),
   //   p1: pointCalc(p, size, 0),
@@ -89,11 +88,37 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
   // let bottomFace = {
   //   p0: pointCalc(p)
   // }
+  // drawPoly(col, width, ...frontFace); // create frontface from values
+
+  //--------------------
+  ct.strokeStyle = col;
+  ct.lineWidth = width;
+
+  let frontFace = [
+    pointCalc(p),
+    pointCalc(p, size, 0),
+    pointCalc(p, size, -size),
+    pointCalc(p, 0, -size)
+  ]
+  drawPoly(col, width, ...frontFace); // create frontface from values
+
+
+
+
+  const scale = 1 - size / (800 * 2); // Inverse scalar
+
+  let backFace = frontFace.map(point => {
+    point.x = (point.x - vp.x) * scale + vp.y;
+    point.y = (point.y - vp.y) * scale + vp.x;
+    return point;
+  });
+  drawPoly(col, width, ...frontFace);
+
   // const p0 = pointCalc(p); // bottomleft
   // const p1 = pointCalc(p, size, 0); // bottom right
   // const p2 = pointCalc(p, size, -size); // topright
   // const p3 = pointCalc(p, 0, -size); // topleft
-  drawPoly(col, width, ...frontFace); // create frontface from values
+  // drawPoly(col, width, p0, p1, p2, p3); // create frontface from values
 
   // ct.beginPath(); // draw vanish lines
   // pathLine(p0, vp); // bottom left
@@ -102,11 +127,14 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
   // pathLine(p3, vp); // top left
   // ct.stroke();
 
-  // const scale = 1 - size / (800 * 2);
   // scalePoint(vp, p0, scale); // uses slope formula to calculate backface points
   // scalePoint(vp, p1, scale);
   // scalePoint(vp, p2, scale);
   // scalePoint(vp, p3, scale);
+  // const scalePoint = (origin, point, scale) => {
+  //   point.x = (point.x - origin.x) * scale + origin.x;
+  //   point.y = (point.y - origin.y) * scale + origin.y;
+  // };
   // drawPoly(col, width, p0, p1, p2, p3); // create backface from values
 }
 
