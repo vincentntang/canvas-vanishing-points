@@ -60,12 +60,26 @@ function draw() {
 function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish point
   ct.strokeStyle = col;
   ct.lineWidth = width;
+  /**
+   * Use clockwise notation for p0, p1,p2,p3 respectively
+   * bottom-left, bottomright, topright, topleft
+   * pointCalc - (p,x,y) where (x,y) are changes
+   */
   // Front
+  const slope = calculateSlope(p, vp);
+  const angle = Math.tanh(slope);
+  console.log(angle);
   let frontFace = [
-    pointCalc(p),
-    pointCalc(p, size, 0),
-    pointCalc(p, size, -size),
-    pointCalc(p, 0, -size),
+    pointCalc(p), // bl
+    pointCalc(p, size, 0), //br
+    pointCalc(p, size, -size), //tr
+    pointCalc(p, 0, -size), //tl
+  ]
+  let leftFace = [
+    pointCalc(p), //br
+    pointCalc(p, 0, -size), //tr
+    pointCalc(p, 0),// tl - Not really sure
+    pointCalc(p, -size * Math.cos(angle), -size * Math.sin(angle)), //bl
   ]
   console.log(frontFace);
   // let leftFace = {
@@ -75,7 +89,7 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
   // let bottomFace = {
   //   p0: pointCalc(p)
   // }
-  // const p0 = pointCalc(p); // get corners
+  // const p0 = pointCalc(p); // bottomleft
   // const p1 = pointCalc(p, size, 0); // bottom right
   // const p2 = pointCalc(p, size, -size); // topright
   // const p3 = pointCalc(p, 0, -size); // topleft
