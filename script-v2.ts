@@ -16,6 +16,7 @@ var canvas: any = document.getElementById("canvas");
 var sliderSize = document.getElementById("sliderSize");
 var sliderOriginY = document.getElementById("sliderOriginY");
 var sliderOriginX = document.getElementById("sliderOriginX");
+var sliderToggleFill = document.getElementById("sliderToggleFill");
 sliderSize.addEventListener("input", (e) => {
   delta = Number((e.target.value);
   sliderSize.nextElementSibling.textContent = e.target.value;
@@ -29,6 +30,11 @@ sliderOriginY.addEventListener("input", (e) => {
 sliderOriginX.addEventListener("input", (e) => {
   p1.x = Number((e.target.value);
   sliderOriginX.nextElementSibling.textContent = e.target.value;
+  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+})
+sliderToggleFill.addEventListener("input", (e) => {
+  toggleFill = Number((e.target.value);
+  sliderToggleFill.nextElementSibling.textContent = e.target.value;
   redraw = true; // uses semaphore (a state variable) to indicate when to redraw
 })
 
@@ -63,6 +69,7 @@ var pA = point(p1.x, p1.y * 2);
 var pB = point(p1.x * 2, p1.y * 2);
 
 var delta = 50;
+var toggleFill = 0;
 
 function update() { // render loop redraws only if true
   if (redraw) { // monitor semaphore / state
@@ -148,13 +155,18 @@ function pathLine(p1, p2) {
 // Draw the square
 function drawPoly(col, width, ...points) {
   ct.strokeStyle = col;
-  ct.fillStyle = 'lightgreen';
   ct.lineWidth = width;
+  if (toggleFill == 1) {
+    ct.fillStyle = 'lightgreen';
+  } else {
+    ct.fillStyle = "rgba(0, 0, 200, 0)";
+  }
   ct.beginPath();
   for (const p of points) {
     ct.lineTo(p.x, p.y); // lineTo every point
   }
-  // ct.fill();
+
+  ct.fill();
   ct.closePath(); // draw closing line
   ct.stroke();
 }

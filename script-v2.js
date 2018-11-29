@@ -14,6 +14,7 @@ var canvas = document.getElementById("canvas");
 var sliderSize = document.getElementById("sliderSize");
 var sliderOriginY = document.getElementById("sliderOriginY");
 var sliderOriginX = document.getElementById("sliderOriginX");
+var sliderToggleFill = document.getElementById("sliderToggleFill");
 sliderSize.addEventListener("input", function (e) {
     delta = Number((e.target.value));
     sliderSize.nextElementSibling.textContent = e.target.value;
@@ -27,6 +28,11 @@ sliderOriginY.addEventListener("input", function (e) {
 sliderOriginX.addEventListener("input", function (e) {
     p1.x = Number((e.target.value));
     sliderOriginX.nextElementSibling.textContent = e.target.value;
+    redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+});
+sliderToggleFill.addEventListener("input", function (e) {
+    toggleFill = Number((e.target.value));
+    sliderToggleFill.nextElementSibling.textContent = e.target.value;
     redraw = true; // uses semaphore (a state variable) to indicate when to redraw
 });
 var ct = canvas.getContext("2d");
@@ -62,6 +68,7 @@ var p1 = point(400, 400);
 var pA = point(p1.x, p1.y * 2);
 var pB = point(p1.x * 2, p1.y * 2);
 var delta = 50;
+var toggleFill = 0;
 function update() {
     if (redraw) { // monitor semaphore / state
         redraw = false; // clear semaphore / state
@@ -144,14 +151,19 @@ function drawPoly(col, width) {
         points[_i - 2] = arguments[_i];
     }
     ct.strokeStyle = col;
-    ct.fillStyle = 'lightgreen';
     ct.lineWidth = width;
+    if (toggleFill == 1) {
+        ct.fillStyle = 'lightgreen';
+    }
+    else {
+        ct.fillStyle = "rgba(0, 0, 200, 0)";
+    }
     ct.beginPath();
     for (var _a = 0, points_1 = points; _a < points_1.length; _a++) {
         var p = points_1[_a];
         ct.lineTo(p.x, p.y); // lineTo every point
     }
-    // ct.fill();
+    ct.fill();
     ct.closePath(); // draw closing line
     ct.stroke();
 }

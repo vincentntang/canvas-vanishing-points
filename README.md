@@ -122,3 +122,6 @@ Fixed it with a math formula from stackexchange
 
 ![](https://i.imgur.com/DGI5lsk.gif)
 
+23. Added toggle fill color support
+
+![](https://i.imgur.com/vf3Xo4Q.gif)
