@@ -2,7 +2,10 @@
 requestAnimationFrame(update);
 
 var canvas: any = document.getElementById("canvas");
-var slider: any = document.getElementById("slider");
+var sliderSize: any = document.getElementById("sliderSize");
+var sliderOriginX: any = document.getElementById("sliderOriginX");
+var sliderOriginY: any = document.getElementById("sliderOriginY");
+
 const ct = canvas.getContext("2d");
 const width = 1600;
 const height = 800;
@@ -33,8 +36,8 @@ const pB = point(p1.x * 2, p1.y * 2);
 
 var delta = 50;
 
-// The slider input event should not directly trigger a render
-slider.addEventListener("input", (e) => {
+// The sliderSize input event should not directly trigger a render
+sliderSize.addEventListener("input", (e) => {
   delta = Number((e.target as HTMLInputElement).value);
   redraw = true; // uses semaphore (a state variable) to indicate when to redraw
 })
@@ -58,39 +61,6 @@ function draw() {
 }
 
 function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish point
-
-  /**
-   * Use clockwise notation for p0, p1,p2,p3 respectively
-   * bottom-left, bottomright, topright, topleft
-   * pointCalc - (p,x,y) where (x,y) are changes
-   */
-  // Front
-  // const slope = calculateSlope(p, vp);
-  // const angle = Math.tanh(slope);
-  // console.log(angle);
-  // let frontFace = [
-  //   pointCalc(p), // bl
-  //   pointCalc(p, size, 0), //br
-  //   pointCalc(p, size, -size), //tr
-  //   pointCalc(p, 0, -size), //tl
-  // ]
-  // let leftFace = [
-  //   pointCalc(p), //br
-  //   pointCalc(p, 0, -size), //tr
-  //   pointCalc(p, 0),// tl - Not really sure
-  //   pointCalc(p, -size * Math.cos(angle), -size * Math.sin(angle)), //bl
-  // ]
-  // console.log(frontFace);
-  // let leftFace = {
-  //   p0: pointCalc(p),
-  //   p1: pointCalc(p, size, 0),
-  // }
-  // let bottomFace = {
-  //   p0: pointCalc(p)
-  // }
-  // drawPoly(col, width, ...frontFace); // create frontface from values
-
-  //--------------------
   ct.strokeStyle = col;
   ct.lineWidth = width;
 
@@ -112,43 +82,8 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
   drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
   drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
   drawPoly(col, width, ...frontFace); // front
-
-  // const p0 = pointCalc(p); // bottomleft
-  // const p1 = pointCalc(p, size, 0); // bottom right
-  // const p2 = pointCalc(p, size, -size); // topright
-  // const p3 = pointCalc(p, 0, -size); // topleft
-  // drawPoly(col, width, p0, p1, p2, p3); // create frontface from values
-
-  // ct.beginPath(); // draw vanish lines
-  // pathLine(p0, vp); // bottom left
-  // pathLine(p1, vp); // bottom right
-  // pathLine(p2, vp); // top right
-  // pathLine(p3, vp); // top left
-  // ct.stroke();
-
-  // scalePoint(vp, p0, scale); // uses slope formula to calculate backface points
-  // scalePoint(vp, p1, scale);
-  // scalePoint(vp, p2, scale);
-  // scalePoint(vp, p3, scale);
-  // const scalePoint = (origin, point, scale) => {
-  //   point.x = (point.x - origin.x) * scale + origin.x;
-  //   point.y = (point.y - origin.y) * scale + origin.y;
-  // };
-  // drawPoly(col, width, p0, p1, p2, p3); // create backface from values
 }
 
-/**
- * Grab the coordinate pairs
- * {p} -> {x:400,y:400} coordinate pair object
- * {type} -> callback function
- */
-// function make coordinate pairs
-/**
- * The base implementation of `_.property` without support for deep paths.
- */
-//
-
-// Make Coordinates
 // sideface
 function makeFaceYZ(p, vp) {
 }
