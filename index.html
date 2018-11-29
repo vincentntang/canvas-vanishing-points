@@ -7,7 +7,18 @@
 
 <body>
   <canvas id="canvas"></canvas>
-  <input type="range" min="1" max="800" value="50" id="slider">
+  <input type="range" data-tag="delta" min="1" max="800" value="50" id="sliderSize">
+  <em>50</em>
+  <span>Size</span>
+  <br>
+  <input type="range" data-tag="p1['x']" max="1600" value="50" id="sliderOriginY">
+  <em>50</em>
+  <span>Origin Y</span>
+  <br>
+  <input type="range" min="1" max="1600" value="50" id="sliderOriginX">
+  <em>50</em>
+  <span>Origin X</span>
+  <br>
   <code id="info"></code>
 
   <script src="script-v2.js"></script>

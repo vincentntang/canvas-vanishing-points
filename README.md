@@ -43,7 +43,7 @@ slider.oninput = function () {
   requestAnimationFrame(init()); // redraw everything
 }
 ```
-
+=======
 8. Created partial line using slope formulas in purple
 
 ![](https://i.imgur.com/Yo1AwTF.png)
@@ -76,6 +76,49 @@ slider.oninput = function () {
 
 ![](https://i.imgur.com/QhUdwIq.gif)
 
-16. Refactoring to stackoverflow post initialization
-=======
->>>>>>> master
+16. Refactoring, part 1 destructuring with spread operator
+
+![](https://i.imgur.com/JnxL44Q.png)
+
+17. oh shit I made it work, two faces with remade formulas. Codes way cleaner now, code golf
+
+![](https://i.imgur.com/8LxmBuh.png)
+
+![](https://i.imgur.com/6LXc7NM.png)
+
+18. this doesn't make sense. frontface=backface values, but canvas says otherwise
+
+![](https://i.imgur.com/887DWnI.png)
+
+![](https://i.imgur.com/bJS5UTi.png)
+
+19. It must be an async thing. Console.logs are firing first
+
+![](https://i.imgur.com/DsQHmTt.png)
+
+20. Can specify which faces to write, for canvas overlap
+
+![](https://i.imgur.com/TmAmaU8.gif)
+
+```javascript
+// bottomleft, bottomright, topright, topleft
+drawPoly(col, width, ...backFace); // back
+drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
+drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
+drawPoly(col, width, ...frontFace); // front
+```
+
+21. Changeable origin sliders, but weird physics behavior
+
+![](https://i.imgur.com/6cMk9SZ.gif)
+
+22. Working Box and Origin X and Y
+
+https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
+
+As of now, everything is based on origin (0,0), (400,400) and (800,800)
+
+Fixed it with a math formula from stackexchange
+
+![](https://i.imgur.com/DGI5lsk.gif)
+
