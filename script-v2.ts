@@ -110,8 +110,8 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
     return point;
   });
   // console.log(backFace, "backFace");
-  drawPoly(col, width, ...frontFace);
-  console.log(frontFace, "frontFace");
+  drawPoly(col, width, ...backFace);
+  console.log(frontFace, "backFace");
 
   // const p0 = pointCalc(p); // bottomleft
   // const p1 = pointCalc(p, size, 0); // bottom right

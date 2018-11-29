@@ -104,8 +104,8 @@ function drawVBox(p, size, vp, col, width) {
         return point;
     });
     // console.log(backFace, "backFace");
-    drawPoly.apply(void 0, [col, width].concat(frontFace));
-    console.log(frontFace, "frontFace");
+    drawPoly.apply(void 0, [col, width].concat(backFace));
+    console.log(frontFace, "backFace");
     // const p0 = pointCalc(p); // bottomleft
     // const p1 = pointCalc(p, size, 0); // bottom right
     // const p2 = pointCalc(p, size, -size); // topright
