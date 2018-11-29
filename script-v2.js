@@ -102,19 +102,15 @@ function drawVBox(p, size, vp, col, width) {
     var backFace = frontFace.map(function (_a) {
         var x = _a.x, y = _a.y;
         return ({
-            // x: (x - vp.x) * scale + vp.y,
-            // x: (x - 400) * scale + 400,
-            // y: (y - vp.y) * scale + vp.x,
             x: vp.x - scale * (vp.x - x),
             y: vp.y - scale * (vp.y - y)
         });
     });
     // bottomleft, bottomright, topright, topleft
-    // drawPoly(col, width, ...backFace); // back
+    drawPoly.apply(void 0, [col, width].concat(backFace)); // back
     drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
     drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
     drawPoly.apply(void 0, [col, width].concat(frontFace)); // front
-    drawPoly.apply(void 0, [col, width].concat(backFace)); // back
 }
 // sideface
 function makeFaceYZ(p, vp) {
