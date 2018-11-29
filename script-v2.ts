@@ -94,7 +94,7 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
   ct.strokeStyle = col;
   ct.lineWidth = width;
 
-  let frontFace = [
+  const frontFace = [
     pointCalc(p),
     pointCalc(p, size, 0),
     pointCalc(p, size, -size),
@@ -104,11 +104,11 @@ function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish 
   console.log(frontFace, "frontFace");
   const scale = 1 - size / (800 * 2); // Inverse scalar
 
-  let backFace = frontFace.map(point => {
-    point.x = (point.x - vp.x) * scale + vp.y;
-    point.y = (point.y - vp.y) * scale + vp.x;
-    return point;
-  });
+  const backFace = frontFace.map(({ x, y }) => ({
+    x: (x - vp.x) * scale + vp.y,
+    y: (y - vp.y) * scale + vp.x,
+  }));
+  console.log(backFace);
   // console.log(backFace, "backFace");
   drawPoly(col, width, ...backFace);
   console.log(frontFace, "backFace");
@@ -189,7 +189,6 @@ function drawPoly(col, width, ...points) {
   ct.lineWidth = width;
   ct.beginPath();
   for (const p of points) {
-    console.log(p);
     ct.lineTo(p.x, p.y); // lineTo every point
   }
   ct.fill();
