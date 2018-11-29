@@ -43,6 +43,38 @@ slider.oninput = function () {
   requestAnimationFrame(init()); // redraw everything
 }
 ```
+=======
+8. Created partial line using slope formulas in purple
+
+![](https://i.imgur.com/Yo1AwTF.png)
+
+9. Working shaded value face
+
+![](https://i.imgur.com/o6ykolr.png)
+
+10. Simple box finished
+
+![](https://i.imgur.com/q8ILYqV.png)
+
+11. Growing Box
+
+![](https://i.imgur.com/qr0Tb2E.gif)
+
+12. Made a full house
+
+![](https://i.imgur.com/6xFKNRG.gif)
+
+13. Second Slider on baseY point does weird stuff
+
+![](https://i.imgur.com/BRCHXiP.gif)
+
+14. Slope_B now console.logs correctly
+
+![](https://i.imgur.com/yAXKCR7.gif)
+
+15. Had Slope formula upsidedown, swap x and y
+
+![](https://i.imgur.com/QhUdwIq.gif)
 
 16. Refactoring, part 1 destructuring with spread operator
 
@@ -89,3 +121,4 @@ As of now, everything is based on origin (0,0), (400,400) and (800,800)
 Fixed it with a math formula from stackexchange
 
 ![](https://i.imgur.com/DGI5lsk.gif)
+
