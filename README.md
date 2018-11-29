@@ -79,3 +79,13 @@ drawPoly(col, width, ...frontFace); // front
 21. Changeable origin sliders, but weird physics behavior
 
 ![](https://i.imgur.com/6cMk9SZ.gif)
+
+22. Working Box and Origin X and Y
+
+https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
+
+As of now, everything is based on origin (0,0), (400,400) and (800,800)
+
+Fixed it with a math formula from stackexchange
+
+![](https://i.imgur.com/DGI5lsk.gif)

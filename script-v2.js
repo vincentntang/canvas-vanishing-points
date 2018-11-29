@@ -90,18 +90,24 @@ function drawVBox(p, size, vp, col, width) {
     ];
     console.log(frontFace, "frontFace");
     var scale = 1 - size / (800 * 2); // Inverse scalar
+    console.log(scale);
+    //https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
     var backFace = frontFace.map(function (_a) {
         var x = _a.x, y = _a.y;
         return ({
-            x: (x - vp.x) * scale + vp.y,
-            y: (y - vp.y) * scale + vp.x
+            // x: (x - vp.x) * scale + vp.y,
+            // x: (x - 400) * scale + 400,
+            // y: (y - vp.y) * scale + vp.x,
+            x: vp.x - scale * (vp.x - x),
+            y: vp.y - scale * (vp.y - y)
         });
     });
     // bottomleft, bottomright, topright, topleft
-    drawPoly.apply(void 0, [col, width].concat(backFace)); // back
+    // drawPoly(col, width, ...backFace); // back
     drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
     drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
     drawPoly.apply(void 0, [col, width].concat(frontFace)); // front
+    drawPoly.apply(void 0, [col, width].concat(backFace)); // back
 }
 // sideface
 function makeFaceYZ(p, vp) {
@@ -145,7 +151,7 @@ function drawPoly(col, width) {
         var p = points_1[_a];
         ct.lineTo(p.x, p.y); // lineTo every point
     }
-    ct.fill();
+    // ct.fill();
     ct.closePath(); // draw closing line
     ct.stroke();
 }
