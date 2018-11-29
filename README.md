@@ -63,3 +63,15 @@ slider.oninput = function () {
 19. It must be an async thing. Console.logs are firing first
 
 ![](https://i.imgur.com/DsQHmTt.png)
+
+20. Can specify which faces to write, for canvas overlap
+
+![](https://i.imgur.com/TmAmaU8.gif)
+
+```javascript
+// bottomleft, bottomright, topright, topleft
+drawPoly(col, width, ...backFace); // back
+drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
+drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
+drawPoly(col, width, ...frontFace); // front
+```

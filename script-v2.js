@@ -95,7 +95,6 @@ function drawVBox(p, size, vp, col, width) {
         pointCalc(p, size, -size),
         pointCalc(p, 0, -size)
     ];
-    drawPoly.apply(void 0, [col, width].concat(frontFace)); // create frontface from values
     console.log(frontFace, "frontFace");
     var scale = 1 - size / (800 * 2); // Inverse scalar
     var backFace = frontFace.map(function (_a) {
@@ -105,10 +104,11 @@ function drawVBox(p, size, vp, col, width) {
             y: (y - vp.y) * scale + vp.x
         });
     });
-    console.log(backFace);
-    // console.log(backFace, "backFace");
-    drawPoly.apply(void 0, [col, width].concat(backFace));
-    console.log(frontFace, "backFace");
+    // bottomleft, bottomright, topright, topleft
+    drawPoly.apply(void 0, [col, width].concat(backFace)); // back
+    drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
+    drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
+    drawPoly.apply(void 0, [col, width].concat(frontFace)); // front
     // const p0 = pointCalc(p); // bottomleft
     // const p1 = pointCalc(p, size, 0); // bottom right
     // const p2 = pointCalc(p, size, -size); // topright
@@ -156,7 +156,7 @@ function calculateSlope(p, vp) {
 // Use function to do common tasks and save yourself lots of typing
 function drawLine(p1, p2, col, width) {
     if (width === void 0) { width = 1; }
-    ct.globalCompositeOperation = 'destination-over'; // draw behind
+    // ct.globalCompositeOperation = 'destination-over'; // draw behind
     ct.strokeStyle = col;
     ct.lineWidth = width;
     ct.beginPath();
