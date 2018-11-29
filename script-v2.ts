@@ -1,10 +1,38 @@
+// var sliders = document.querySelectorAll("input");
+// sliders.forEach(item => {
+//   item.addEventListener('input', (e) => {
+//     item.nextElementSibling.textContent = e.target.value;
+//     console.log(item.getAttribute("data-tag"));
+//     window[item.getAttribute("data-tag")] = Number(e.target.value); // target variable by data-tag of input var name
+//     redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+//   });
+// })
 
+// Init
 requestAnimationFrame(update);
 
+// Sliders
 var canvas: any = document.getElementById("canvas");
-var sliderSize: any = document.getElementById("sliderSize");
-var sliderOriginX: any = document.getElementById("sliderOriginX");
-var sliderOriginY: any = document.getElementById("sliderOriginY");
+var sliderSize = document.getElementById("sliderSize");
+var sliderOriginY = document.getElementById("sliderOriginY");
+var sliderOriginX = document.getElementById("sliderOriginX");
+sliderSize.addEventListener("input", (e) => {
+  delta = Number((e.target.value);
+  sliderSize.nextElementSibling.textContent = e.target.value;
+  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+})
+sliderOriginY.addEventListener("input", (e) => {
+  p1.y = Number((e.target.value);
+  sliderOriginY.nextElementSibling.textContent = e.target.value;
+  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+})
+sliderOriginX.addEventListener("input", (e) => {
+  p1.x = Number((e.target.value);
+  sliderOriginX.nextElementSibling.textContent = e.target.value;
+  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+})
+
+
 
 const ct = canvas.getContext("2d");
 const width = 1600;
@@ -30,17 +58,11 @@ const scalePoint = (origin, point, scale) => {
 };
 
 // Objects Cartesion Points
-const p1 = point(400, 400);;
-const pA = point(p1.x, p1.y * 2);
-const pB = point(p1.x * 2, p1.y * 2);
+var p1 = point(400, 400);;
+var pA = point(p1.x, p1.y * 2);
+var pB = point(p1.x * 2, p1.y * 2);
 
 var delta = 50;
-
-// The sliderSize input event should not directly trigger a render
-sliderSize.addEventListener("input", (e) => {
-  delta = Number((e.target as HTMLInputElement).value);
-  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
-})
 
 function update() { // render loop redraws only if true
   if (redraw) { // monitor semaphore / state
@@ -62,7 +84,7 @@ function draw() {
 
 function drawVBox(p, size, vp, col, width) { // p is bottom left,  vp is vanish point
   ct.strokeStyle = col;
-  ct.lineWidth = width;
+  ct.lineWidth = width; 0
 
   const frontFace = [
     pointCalc(p),

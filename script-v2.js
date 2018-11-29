@@ -1,8 +1,34 @@
+// var sliders = document.querySelectorAll("input");
+// sliders.forEach(item => {
+//   item.addEventListener('input', (e) => {
+//     item.nextElementSibling.textContent = e.target.value;
+//     console.log(item.getAttribute("data-tag"));
+//     window[item.getAttribute("data-tag")] = Number(e.target.value); // target variable by data-tag of input var name
+//     redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+//   });
+// })
+// Init
 requestAnimationFrame(update);
+// Sliders
 var canvas = document.getElementById("canvas");
 var sliderSize = document.getElementById("sliderSize");
-var sliderOriginX = document.getElementById("sliderOriginX");
 var sliderOriginY = document.getElementById("sliderOriginY");
+var sliderOriginX = document.getElementById("sliderOriginX");
+sliderSize.addEventListener("input", function (e) {
+    delta = Number((e.target.value));
+    sliderSize.nextElementSibling.textContent = e.target.value;
+    redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+});
+sliderOriginY.addEventListener("input", function (e) {
+    p1.y = Number((e.target.value));
+    sliderOriginY.nextElementSibling.textContent = e.target.value;
+    redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+});
+sliderOriginX.addEventListener("input", function (e) {
+    p1.x = Number((e.target.value));
+    sliderOriginX.nextElementSibling.textContent = e.target.value;
+    redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+});
 var ct = canvas.getContext("2d");
 var width = 1600;
 var height = 800;
@@ -36,11 +62,6 @@ var p1 = point(400, 400);
 var pA = point(p1.x, p1.y * 2);
 var pB = point(p1.x * 2, p1.y * 2);
 var delta = 50;
-// The sliderSize input event should not directly trigger a render
-sliderSize.addEventListener("input", function (e) {
-    delta = Number(e.target.value);
-    redraw = true; // uses semaphore (a state variable) to indicate when to redraw
-});
 function update() {
     if (redraw) { // monitor semaphore / state
         redraw = false; // clear semaphore / state
@@ -60,6 +81,7 @@ function draw() {
 function drawVBox(p, size, vp, col, width) {
     ct.strokeStyle = col;
     ct.lineWidth = width;
+    0;
     var frontFace = [
         pointCalc(p),
         pointCalc(p, size, 0),
