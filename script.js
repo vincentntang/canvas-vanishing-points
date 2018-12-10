@@ -181,13 +181,7 @@ function drawVBox(p, size, vp, col, width, vp2, scalar) {
   }
 
   // If only one VP
-  if (secondVP == 0) {
-    // bottomleft, bottomright, topright, topleft
-    drawPoly(col, width, ...backFace); // back
-    drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
-    drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
-    drawPoly(col, width, ...frontFace); // front
-  } else if (secondVP == 1) {
+  if (secondVP == 0 || secondVP == 1) {
     // bottomleft, bottomright, topright, topleft
     drawPoly(col, width, ...backFace); // back
     drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
