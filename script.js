@@ -6,7 +6,7 @@ var sliderSize = document.getElementById("sliderSize");
 var sliderOriginY = document.getElementById("sliderOriginY");
 var sliderOriginX = document.getElementById("sliderOriginX");
 var sliderToggleFill = document.getElementById("sliderToggleFill");
-var sliderAddVP = document.getElementById("sliderAddVP");
+var sliderSpacing = document.getElementById("sliderSpacing");
 
 // Size
 sliderSize.addEventListener("input", e => {
@@ -24,6 +24,8 @@ sliderOriginY.addEventListener("input", e => {
 // OriginX
 sliderOriginX.addEventListener("input", e => {
   p1.x = Number(e.target.value);
+  q1.x = Number(e.target.value) * spacing;
+  console.log(spacing, "spacing");
 
   sliderOriginX.nextElementSibling.textContent = e.target.value;
   redraw = true;
@@ -40,8 +42,17 @@ sliderAddVP.addEventListener("input", e => {
   sliderAddVP.nextElementSibling.textContent = e.target.value;
   redraw = true;
 });
+// Toggle Spacing Distance
+sliderSpacing.addEventListener("input", e => {
+  spacing = 1 + Number(e.target.value) / 100;
+  p1.x = Number(e.target.value);
+  q1.x = Number(e.target.value) * spacing;
+  sliderSpacing.nextElementSibling.textContent = e.target.value;
+  redraw = true;
+});
 
 // Document Sliders
+
 // var msgBox = document.querySelector(".checkbox");
 // msgBox.addEventListener("input", e => {
 //   console.log(e.target.value);
@@ -83,6 +94,7 @@ var q1 = point(p1.x + 800, p1.y);
 var delta = 50;
 var toggleFill = 0;
 var secondVP = 0;
+var spacing = 1.15;
 
 function update() {
   // render loop redraws only if true
