@@ -34,6 +34,13 @@ sliderAddVP.addEventListener("input", e => {
   redraw = true;
 });
 
+// Document Sliders
+// var msgBox = document.querySelector(".checkbox");
+// msgBox.addEventListener("input", e => {
+//   console.log(e.target.value);
+// });
+// console.log(msgBox);
+
 const ct = canvas.getContext("2d");
 const width = 1600;
 const height = 800;
@@ -62,6 +69,10 @@ var p1 = point(400, 400);
 var pA = point(p1.x, p1.y * 2);
 var pB = point(p1.x * 2, p1.y * 2);
 
+// Second Vanishing Point
+var q1 = point(p1.x + 800, p1.y);
+
+// State Toggles
 var delta = 50;
 var toggleFill = 0;
 var secondVP = 0;
