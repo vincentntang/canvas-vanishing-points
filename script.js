@@ -6,25 +6,32 @@ var sliderSize = document.getElementById("sliderSize");
 var sliderOriginY = document.getElementById("sliderOriginY");
 var sliderOriginX = document.getElementById("sliderOriginX");
 var sliderToggleFill = document.getElementById("sliderToggleFill");
+var sliderAddVP = document.getElementById("sliderAddVP");
+
 sliderSize.addEventListener("input", e => {
   delta = Number(e.target.value);
   sliderSize.nextElementSibling.textContent = e.target.value;
-  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+  redraw = true;
 });
 sliderOriginY.addEventListener("input", e => {
   p1.y = Number(e.target.value);
   sliderOriginY.nextElementSibling.textContent = e.target.value;
-  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+  redraw = true;
 });
 sliderOriginX.addEventListener("input", e => {
   p1.x = Number(e.target.value);
   sliderOriginX.nextElementSibling.textContent = e.target.value;
-  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+  redraw = true;
 });
 sliderToggleFill.addEventListener("input", e => {
   toggleFill = Number(e.target.value);
   sliderToggleFill.nextElementSibling.textContent = e.target.value;
-  redraw = true; // uses semaphore (a state variable) to indicate when to redraw
+  redraw = true;
+});
+sliderAddVP.addEventListener("input", e => {
+  secondVP = Number(e.target.value);
+  sliderAddVP.nextElementSibling.textContent = e.target.value;
+  redraw = true;
 });
 
 const ct = canvas.getContext("2d");
@@ -57,6 +64,7 @@ var pB = point(p1.x * 2, p1.y * 2);
 
 var delta = 50;
 var toggleFill = 0;
+var secondVP = 0;
 
 function update() {
   // render loop redraws only if true
@@ -104,17 +112,6 @@ function drawVBox(p, size, vp, col, width) {
   drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
   drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
   drawPoly(col, width, ...frontFace); // front
-}
-
-// sideface
-function makeFaceYZ(p, vp) {}
-// front / backface
-function makeFaceXZ(p, vp) {}
-// topface / bottomface
-function makeFaceXY(p, vp) {}
-
-function calculateSlope(p, vp) {
-  return (p.y - vp.y) / (p.x - vp.x);
 }
 
 // Use function to do common tasks and save yourself lots of typing
