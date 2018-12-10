@@ -8,26 +8,33 @@ var sliderOriginX = document.getElementById("sliderOriginX");
 var sliderToggleFill = document.getElementById("sliderToggleFill");
 var sliderAddVP = document.getElementById("sliderAddVP");
 
+// Size
 sliderSize.addEventListener("input", e => {
   delta = Number(e.target.value);
   sliderSize.nextElementSibling.textContent = e.target.value;
   redraw = true;
 });
+// OriginY
 sliderOriginY.addEventListener("input", e => {
   p1.y = Number(e.target.value);
+  q1.y = Number(e.target.value); // keep y value on same plane
   sliderOriginY.nextElementSibling.textContent = e.target.value;
   redraw = true;
 });
+// OriginX
 sliderOriginX.addEventListener("input", e => {
   p1.x = Number(e.target.value);
+
   sliderOriginX.nextElementSibling.textContent = e.target.value;
   redraw = true;
 });
+//Toggle Fill
 sliderToggleFill.addEventListener("input", e => {
   toggleFill = Number(e.target.value);
   sliderToggleFill.nextElementSibling.textContent = e.target.value;
   redraw = true;
 });
+//Toggle SecondVP
 sliderAddVP.addEventListener("input", e => {
   secondVP = Number(e.target.value);
   sliderAddVP.nextElementSibling.textContent = e.target.value;
@@ -95,6 +102,9 @@ function draw() {
   drawLine(p1, pA, "red");
   drawLine(p1, pB, "green");
   drawVBox(pB, delta, p1, "blue", 1);
+  if (secondVP == 1) {
+    drawLine(q1, pB, "purple");
+  }
 }
 
 function drawVBox(p, size, vp, col, width) {
