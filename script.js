@@ -95,6 +95,7 @@ var delta = 50;
 var toggleFill = 0;
 var secondVP = 0;
 var spacing = 1.15;
+// var scaleMultiplier = 1; // Add later for dictating size of box to drawVbox
 
 function update() {
   // render loop redraws only if true
@@ -120,31 +121,38 @@ function draw() {
 }
 
 function drawVBox(p, size, vp, col, width) {
+  //https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
   // p is bottom left,  vp is vanish point
   ct.strokeStyle = col;
   ct.lineWidth = width;
-  0;
+  var scale = 1 - size / (800 * 2); // Inverse scalar
+  let frontFace = [];
+  let backface = [];
 
-  const frontFace = [
-    pointCalc(p),
-    pointCalc(p, size, 0),
-    pointCalc(p, size, -size),
-    pointCalc(p, 0, -size)
-  ];
-  console.log(frontFace, "frontFace");
-  const scale = 1 - size / (800 * 2); // Inverse scalar
-  console.log(scale);
+  if (secondVP == 0) {
+    frontFace = [
+      pointCalc(p),
+      pointCalc(p, size, 0),
+      pointCalc(p, size, -size),
+      pointCalc(p, 0, -size)
+    ];
+    backFace = frontFace.map(({ x, y }) => ({
+      x: vp.x - scale * (vp.x - x),
+      y: vp.y - scale * (vp.y - y)
+    }));
+  }
 
-  //https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
-  const backFace = frontFace.map(({ x, y }) => ({
-    x: vp.x - scale * (vp.x - x),
-    y: vp.y - scale * (vp.y - y)
-  }));
-  // bottomleft, bottomright, topright, topleft
-  drawPoly(col, width, ...backFace); // back
-  drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
-  drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
-  drawPoly(col, width, ...frontFace); // front
+  // If only one VP
+  if (secondVP == 0) {
+    // bottomleft, bottomright, topright, topleft
+    drawPoly(col, width, ...backFace); // back
+    drawPoly(col, width, backFace[0], backFace[3], frontFace[3], frontFace[0]); // left
+    drawPoly(col, width, backFace[1], backFace[2], frontFace[2], frontFace[1]); // right
+    drawPoly(col, width, ...frontFace); // front
+  } else if (secondVP == 1) {
+  } else {
+    console.log("error, can only have 1 or 2 vanishing points");
+  }
 }
 
 // Use function to do common tasks and save yourself lots of typing
