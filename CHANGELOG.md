@@ -117,3 +117,7 @@ Fixed it with a math formula from stackexchange
 25. Working Demo, but looks really off. Hard coded in 800 point offset
 
 ![](https://i.imgur.com/NreGGGO.gif)
+
+26. Some issues with getting the box to be regular planed
+
+![](https://i.imgur.com/F0okKQO.gif)

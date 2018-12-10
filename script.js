@@ -7,7 +7,7 @@ var sliderOriginY = document.getElementById("sliderOriginY");
 var sliderOriginX = document.getElementById("sliderOriginX");
 var sliderToggleFill = document.getElementById("sliderToggleFill");
 var sliderSpacing = document.getElementById("sliderSpacing");
-
+var sliderElongate = document.getElementById("sliderElongate");
 // Size
 sliderSize.addEventListener("input", e => {
   delta = Number(e.target.value);
@@ -48,6 +48,12 @@ sliderSpacing.addEventListener("input", e => {
   p1.x = Number(e.target.value);
   q1.x = Number(e.target.value) * spacing;
   sliderSpacing.nextElementSibling.textContent = e.target.value;
+  redraw = true;
+});
+// Toggle Rectangilness
+sliderElongate.addEventListener("input", e => {
+  scalar = Number(e.target.value);
+  sliderElongate.nextElementSibling.textContent = e.target.value;
   redraw = true;
 });
 
@@ -95,7 +101,7 @@ var delta = 50;
 var toggleFill = 0;
 var secondVP = 0;
 var spacing = 1.15;
-// var scaleMultiplier = 1; // Add later for dictating size of box to drawVbox
+var scalar = 1600;
 
 function update() {
   // render loop redraws only if true
@@ -114,18 +120,19 @@ function update() {
 function draw() {
   drawLine(p1, pA, "red");
   drawLine(p1, pB, "green");
-  drawVBox(pB, delta, p1, "blue", 1, q1);
+  drawVBox(pB, delta, p1, "blue", 1, q1, scalar);
   if (secondVP == 1) {
     drawLine(q1, pB, "purple");
   }
 }
 
-function drawVBox(p, size, vp, col, width, vp2) {
+function drawVBox(p, size, vp, col, width, vp2, scalar) {
   //https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
   // p is bottom left,  vp is vanish point
   ct.strokeStyle = col;
   ct.lineWidth = width;
-  var scale = 1 - size / (800 * 2); // Inverse scalar
+  // var elongate = 1 - size / (800 * 2); // Make box more elongated
+  var elongate = 1 - size / scalar; // Make box more elongated
   let frontFace = [];
   let backFace = [];
 
@@ -137,8 +144,8 @@ function drawVBox(p, size, vp, col, width, vp2) {
       pointCalc(p, 0, -size)
     ];
     backFace = frontFace.map(({ x, y }) => ({
-      x: vp.x - scale * (vp.x - x),
-      y: vp.y - scale * (vp.y - y)
+      x: vp.x - elongate * (vp.x - x),
+      y: vp.y - elongate * (vp.y - y)
     }));
     console.log(backFace, "backface, 1st VP");
     console.log(frontFace, "frontface, 1st VP");
@@ -147,19 +154,23 @@ function drawVBox(p, size, vp, col, width, vp2) {
       pointCalc(p),
       pointCalc(
         p,
-        vp2.x - scale * (vp2.x - p.x) - 800,
-        vp2.y - scale * (vp.y - p.y) - 800
+        vp2.x - elongate * (vp2.x - p.x) - 800,
+        vp2.y - elongate * (vp.y - p.y) - 800
       ),
       pointCalc(
         p,
-        vp2.x - scale * (vp2.x - p.x) - 800,
-        vp2.y - scale * (vp.y - p.y) - 800 - size
+        vp2.x - elongate * (vp2.x - p.x) - 800,
+        vp2.y - elongate * (vp.y - p.y) - 800 - size
       ),
       pointCalc(p, 0, -size)
     ];
+    // backFace = frontFace.map(({ x, y }) => ({
+    //   x: vp.x - elongate * (vp.x - x),
+    //   y: vp.y - elongate * (vp.y - y)
+    // }));
     backFace = frontFace.map(({ x, y }) => ({
-      x: vp.x - scale * (vp.x - x),
-      y: vp.y - scale * (vp.y - y)
+      x: vp.x - elongate * (vp.x - x),
+      y: vp.y - elongate * (vp.y - y)
     }));
     console.log(backFace, "backface, 2nd VP");
     console.log(frontFace, "frontface, 2nd VP");
