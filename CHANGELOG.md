@@ -109,3 +109,11 @@ Fixed it with a math formula from stackexchange
 23. Added toggle fill color support
 
 ![](https://i.imgur.com/vf3Xo4Q.gif)
+
+24. Adjustable Spacing Vanishing Point 2nd Line
+
+![](https://i.imgur.com/CnnArWJ.gif)
+
+25. Working Demo, but looks really off. Hard coded in 800 point offset
+
+![](https://i.imgur.com/NreGGGO.gif)
