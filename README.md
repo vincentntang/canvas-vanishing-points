@@ -1,3 +1,5 @@
+![](https://i.imgur.com/ZdMDjrm.gif)
+
 Canvas Vanishing Points is an experimental project I made, to understand how 3D objects are represented in 2D space, using perspective vanishing points. 
 
 Below is a gif on what the repo does:
@@ -8,5 +10,3 @@ Features
 - You can toggle a second vanishing point
 - You can adjust spacing between 2 vanishing points
 - You can increase the overallsize of the unit.
-
-![](https://i.imgur.com/ZdMDjrm.gif)
