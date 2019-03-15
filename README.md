@@ -2,8 +2,6 @@
 
 Canvas Vanishing Points is an experimental project I made, to understand how 3D objects are represented in 2D space, using perspective vanishing points. 
 
-Below is a gif on what the repo does:
-
 Features
 - You can set the size of the box
 - You can change the origin vanishing point position
