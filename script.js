@@ -100,7 +100,7 @@ var q1 = point(p1.x + 800, p1.y);
 var delta = 50;
 var toggleFill = 0;
 var secondVP = 0;
-var spacing = 1.15;
+var spacing = 300;
 var scalar = 1600;
 
 function update() {
